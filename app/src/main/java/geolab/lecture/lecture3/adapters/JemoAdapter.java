@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import geolab.lecture.lecture3.R;
@@ -57,11 +59,14 @@ public class JemoAdapter extends BaseAdapter {
 
             ImageView img = (ImageView) itemView.findViewById(R.id.imageView);
 
-            img.setImageDrawable(context.getResources().getDrawable(R.drawable.abc_ab_share_pack_mtrl_alpha));
+          //  img.setImageDrawable(context.getResources().getDrawable(R.drawable.abc_ab_share_pack_mtrl_alpha));
+
+
 
             viewHolder.saxeliView = saxeli;
             viewHolder.statusView = statusi;
             viewHolder.nomeriView = nomeri;
+            viewHolder.img = img;
 
             itemView.setTag(viewHolder);
         }else{
@@ -76,10 +81,17 @@ public class JemoAdapter extends BaseAdapter {
         viewHolder.statusView.setText(student.getStatus());
         viewHolder.nomeriView.setText(student.getPhoneNumber());
 
+        Picasso.with(context)
+                .load("http://ia.media-imdb.com/images/M/MV5BMjA2MDAwOTI0OV5BMl5BanBnXkFtZTcwNjA3NDg1Nw@@._V1._SX100_SY140_.jpg")
+                .resize(200, 200)
+                .centerCrop()
+                .into(viewHolder.img);
+
         return itemView;
     }
 
     private class ViewHolder{
         TextView saxeliView, statusView, nomeriView;
+        ImageView img;
     }
 }

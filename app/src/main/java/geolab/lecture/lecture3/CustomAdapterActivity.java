@@ -1,9 +1,12 @@
 package geolab.lecture.lecture3;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -24,6 +27,20 @@ public class CustomAdapterActivity extends ActionBarActivity {
         JemoAdapter adapter = new JemoAdapter(this, initAdapter());
 
         listview.setAdapter(adapter);
+
+        // es metodi amas aketebs
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent detailsActivityIntent = new Intent(getApplicationContext(), DetailsActivity.class);
+
+                Student stud = (Student) parent.getAdapter().getItem(position);
+
+                detailsActivityIntent.putExtra("Item", stud);
+
+                startActivity(detailsActivityIntent);
+            }
+        });
 
     }
 

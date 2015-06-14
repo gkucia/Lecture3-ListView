@@ -1,9 +1,15 @@
 package geolab.lecture.lecture3.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.support.v4.os.ParcelableCompatCreatorCallbacks;
+
+import java.io.Serializable;
+
 /**
  * Created by Jay on 6/10/2015.
  */
-public class Student {
+public class Student implements Parcelable {
     private String saxeli, status, phoneNumber;
 
     public Student(String saxeli, String status, String phoneNumber) {
@@ -43,5 +49,15 @@ public class Student {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
     }
 }

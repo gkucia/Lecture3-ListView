@@ -10,10 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
-import geolab.lecture.lecture3.model.Student;
-
 
 public class MainActivity extends ActionBarActivity {
 
